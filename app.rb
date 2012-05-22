@@ -92,8 +92,8 @@ get '/:source/login' do
     begin
       if params[:code]
         token_response = Instagram::get_access_token(return_to: return_url, code: params[:code])
-        token_response.body
         puts token_response.body
+        haml token_response.body
         # user = User.from_token token_response.body
         # redirect user_url(user.username)
         
