@@ -1,10 +1,10 @@
 require 'faraday_middleware'
 require 'hashie/mash'
 
+
 module Instagram
   module Configuration
     attr_accessor :client_id, :client_secret, :access_token, :cache
-  
     def configure
       yield self
     end
@@ -20,7 +20,7 @@ module Instagram
       unless env[:request][:oauth] == false
         params = %w[client_id client_secret access_token].each_with_object({}) do |key, hash|
           value = @config.send(key)
-          hash[key] = value if value.present?
+          hash[key] = value unless value.nil?
         end
         if env[:method] == :get
           url = env[:url]

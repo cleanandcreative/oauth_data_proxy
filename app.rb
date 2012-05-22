@@ -3,6 +3,7 @@ require 'sinatra'
 require 'instagram'
 require 'haml'
 require 'choices'
+require 'digest/md5'
 
 Choices.load_settings(File.join(settings.root, 'config.yml'), settings.environment.to_s).each do |key, value|
   set key.to_sym, value
@@ -11,7 +12,6 @@ end
 Instagram.configure do |config|
   for key, value in settings.instagram
     config.send("#{key}=", value)
-    # puts "#{key} = #{value}"
   end
 end
 
@@ -92,8 +92,16 @@ get '/:source/login' do
     begin
       if params[:code]
         token_response = Instagram::get_access_token(return_to: return_url, code: params[:code])
-        user = User.from_token token_response.body
-        redirect user_url(user.username)
+        token_response.body
+        puts token_response.body
+        # user = User.from_token token_response.body
+        # redirect user_url(user.username)
+        
+        
+        # env['INSTAGRAM_TOKEN'] = token_response.body.access_token
+        # Instagram.configure do |config|
+        #   instagram_token = env['INSTAGRAM_TOKEN']
+        # end
       elsif params[:error]
         status 401
         haml "%h1 Can't login: #{params[:error_description]}"
@@ -114,9 +122,24 @@ end
 get '/:source/*' do
   case params[:source].downcase.to_sym
   when :instagram
-    "instagram! "
-    # Instagram.get(params[:splat])
-    haml "Get this from instagram: #{params[:splat]}"
+    # "instagram! "
+    # Instagram.get(params[:splat].join("/"), :raw => true)
+    # haml "Get this from instagram: #{params[:splat]}"
+    
+    # puts Instagram.get_url(params[:splat].join("/")).methods
+    # puts Instagram.get_url(params[:splat].join("/"))
+    
+    callback = params['_callback']
+    raw_json = check_data Instagram.get(params[:splat].join("/"), :raw => true)
+    content_type "application/#{callback ? 'javascript' : 'json'}", charset: 'utf-8'
+    expires settings.expires.data_cache, :public
+    etag Digest::MD5.hexdigest(raw_json)
+    if callback
+      "#{callback}(#{raw_json.strip})"
+    else
+      raw_json
+    end
+    
   when :twitter
     "twitter "
   end

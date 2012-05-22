@@ -1,5 +1,0 @@
-default: &defaults
-  instagram:
-    client_id: '3005b46f289c40bea8172a0d9156cfc6'
-    client_secret: '9d8b109df2c5409eb72c5ae7bc65ffbd'
-    access_token: ''

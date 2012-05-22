@@ -4,17 +4,15 @@ default: &defaults
     client_secret: <%= ENV['INSTAGRAM_SECRET'] %>
     access_token: <%= ENV['INSTAGRAM_TOKEN'] %>
     
-    
-    
-    
-  indextank:
-    api_url: <%= ENV['INDEXTANK_API_URL'] %>
-  mongodb:
-    url: <%= ENV['MONGODB_URL'] %>
+  # indextank:
+  #   api_url: <%= ENV['INDEXTANK_API_URL'] %>
+  # mongodb:
+  #   url: <%= ENV['MONGODB_URL'] %>
   expires:
     api_cache: <%= 30 * 60 %>
     index_page: <%= 30 * 60 %>
     help_page: <%= 60 * 60 %>
+    data_cache: <%= 30 * 60 %>
     
 development:
   <<: *defaults

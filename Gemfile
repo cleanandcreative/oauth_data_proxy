@@ -12,3 +12,5 @@ gem 'bson_ext'
 gem 'faraday_middleware'
 gem 'choices'
 gem 'rake'
+
+gem 'activesupport'

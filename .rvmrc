@@ -1,1 +1,1 @@
-rvm use 1.9.3-p0-HEAD@oauth_proxy --create
+rvm use 1.9.3-p194@oauth_proxy --create
