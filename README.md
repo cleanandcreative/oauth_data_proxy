@@ -27,9 +27,10 @@
 
 ### Get Data
   
-http://localhost:9393/instagram/users/self/feed
+[http://localhost:9393/instagram/users/self/feed][feed]
 
 # BOOM!
 
 [app_registration]: http://instagram.com/developer/clients/manage/
 [login]: localhost:9393/login
+[feed]: http://localhost:9393/instagram/users/self/feed
