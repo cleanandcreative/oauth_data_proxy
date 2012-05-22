@@ -1,22 +1,12 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activemodel (3.0.5)
-      activesupport (= 3.0.5)
-      builder (~> 2.1.2)
-      i18n (~> 0.4)
-    activesupport (3.0.5)
     bson (1.6.2)
     bson_ext (1.6.2)
       bson (~> 1.6.2)
-    builder (2.1.2)
     choices (0.2.4)
       hashie (>= 0.4.0)
-    compass (0.10.6)
-      haml (>= 3.0.4)
     daemons (1.1.2)
-    dalli (2.0.3)
-    erubis (2.7.0)
     eventmachine (0.12.10)
     faraday (0.8.0)
       multipart-post (~> 1.1)
@@ -24,18 +14,7 @@ GEM
       faraday (>= 0.7.4, < 0.9)
     haml (3.0.25)
     hashie (1.1.0)
-    i18n (0.5.0)
-    mingo (0.4.3)
-      mongo (>= 1.3)
-    mongo (1.6.2)
-      bson (~> 1.6.2)
-    mongo_ext (0.19.3)
     multipart-post (1.1.5)
-    never-forget (0.1.1)
-      activesupport
-      erubis
-      mingo (>= 0.2)
-      rack
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -51,27 +30,16 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     tilt (1.3.3)
-    will_paginate (3.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activemodel
-  activesupport
   bson_ext
-  builder
   choices
-  compass
-  dalli
   faraday_middleware
   haml
-  i18n
-  mingo
-  mongo_ext
-  never-forget
   rake
   shotgun
   sinatra
   thin
-  will_paginate (~> 3.0.0)

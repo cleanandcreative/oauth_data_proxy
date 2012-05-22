@@ -53,7 +53,7 @@ module Instagram
         conn.use      :instrumentation
         conn.adapter  Faraday.default_adapter
 
-        conn.headers['User-Agent'] = 'instagram.heroku.com ruby client'
+        conn.headers['User-Agent'] = 'instagram ruby client'
         conn.options[:timeout] = 6
         conn.options[:open_timeout] = 2
       end
@@ -98,26 +98,6 @@ module Instagram
         def error!() raise Instagram::Error.new(self) end
       RUBY
       body
-    end
-    
-    def user(user_id, *args)
-      get("users/#{user_id}", *args)
-    end
-  
-    def user_recent_media(user_id, *args)
-      get("users/#{user_id}/media/recent", *args)
-    end
-  
-    def media_popular(*args)
-      get("media/popular", *args)
-    end
-  
-    def tag_search(query, params = {})
-      get("tags/search", params.merge(:q => query))
-    end
-  
-    def tag_recent_media(tag, *args)
-      get("tags/#{tag}/media/recent", *args)
     end
   end
   
