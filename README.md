@@ -42,9 +42,20 @@ Caveat: you need to know user IDs; usernames can't be used. However, you can sta
 
 To see which models and properties are available, see [models.rb][models].
 
+# Helpful links
+* [https://github.com/jrconlin/oauthsimple/blob/master/php/example.php][https://github.com/jrconlin/oauthsimple/blob/master/php/example.php]
+* [http://unitedheroes.net/OAuthSimple/][http://unitedheroes.net/OAuthSimple/]
+* [https://github.com/mislav/instagram][https://github.com/mislav/instagram]
+* [https://github.com/cosenary/Instagram-PHP-API][https://github.com/cosenary/Instagram-PHP-API]
+* [https://github.com/macuenca/Instagram-PHP-API][https://github.com/macuenca/Instagram-PHP-API]
+* [https://github.com/Phunky/instagram-curl-php/blob/master/instagram-curl.php][https://github.com/Phunky/instagram-curl-php/blob/master/instagram-curl.php]
+* [http://marktrapp.com/blog/2009/09/17/oauth-dummies][http://marktrapp.com/blog/2009/09/17/oauth-dummies]
+
 
 [instagram]: http://instagr.am/
 [web]: http://instagram.heroku.com
 [wiki]: https://github.com/mislav/instagram/wiki "Instagram API"
 [models]: https://github.com/mislav/instagram/blob/master/lib/instagram/models.rb
 [official]: http://instagram.com/developer/
+
+
