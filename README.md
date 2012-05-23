@@ -1,46 +1,36 @@
-# Unofficial [Instagram][] Ruby library
+# To get started on dev:
 
-This library acts as a client for the [unofficial Instagram API][wiki]. It was used to create [the missing Instagram web interface][web] before [their main API][official] went public.
+    # Pull down the repo
+    git clone git@github.com:cleanandcreative/oauth_data_proxy.git && cd oauth_data_proxy
 
-With it, you can:
+    bundle install
 
-* fetch popular photos;
-* get user info;
-* browse photos by a user.
+    # Install a local config file, which we'll then add values to
+    touch config.local.yml
+    echo "development:" >> config.local.yml
+    echo "  instagram:" >> config.local.yml
+    echo "    client_id: ''" >> config.local.yml
+    echo "    client_secret: ''" >> config.local.yml
+    echo "    access_token: ''" >> config.local.yml
+    $EDITOR config.local.yml
 
-Caveat: you need to know user IDs; usernames can't be used. However, you can start from the popular feed and drill down from there.
+    #
+    # Now copy client\_id and client_secret from your instagram app [registration page][app_registration]
+    #
 
-## Example usage
+    # Start the server
+    shotgun
 
-    require 'instagram'
-    
-    photos = Instagram::popular
-    photo = photos.first
-    
-    photo.caption     #=> "Extreme dog closeup"
-    photo.likes.size  #=> 54
-    photo.filter_name #=> "X-Pro II"
-    
-    photo.user.username      #=> "johndoe"
-    photo.user.full_name     #=> "John Doe"
-    photo.comments[1].text   #=> "That's so cute"
-    photo.images.last.width  #=> 612
-    
-    # available sizes: 150px / 306px / 612px square
-    photo.image_url(612)
-    # => "http://distillery.s3.amazonaws.com/media/-.jpg" (612×612px image)
-    
-    # fetch extended info for John
-    john_info = Instagram::user_info(photo.user.id)
-    
-    john_info.media_count    #=> 32
-    john_info.follower_count #=> 160
-    
-    
-    # find more photos by John
-    photos_by_john = Instagram::by_user(photo.user.id)
+### Fetch the Access Token
+  
+[Go through the login process][login], and copy/paste the returned access_token into the config.local.yml file.
 
-To see which models and properties are available, see [models.rb][models].
+### Get Data
+  
+[http://localhost:9393/instagram/users/self/feed][feed]
+
+# BOOM!
+
 
 # Helpful links
 * [https://github.com/jrconlin/oauthsimple/blob/master/php/example.php][https://github.com/jrconlin/oauthsimple/blob/master/php/example.php]
@@ -52,10 +42,7 @@ To see which models and properties are available, see [models.rb][models].
 * [http://marktrapp.com/blog/2009/09/17/oauth-dummies][http://marktrapp.com/blog/2009/09/17/oauth-dummies]
 
 
-[instagram]: http://instagr.am/
-[web]: http://instagram.heroku.com
-[wiki]: https://github.com/mislav/instagram/wiki "Instagram API"
-[models]: https://github.com/mislav/instagram/blob/master/lib/instagram/models.rb
-[official]: http://instagram.com/developer/
-
+[app_registration]: http://instagram.com/developer/clients/manage/
+[login]: localhost:9393/login
+[feed]: http://localhost:9393/instagram/users/self/feed
 
